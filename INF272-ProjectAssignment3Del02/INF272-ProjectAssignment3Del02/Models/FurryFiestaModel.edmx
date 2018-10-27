@@ -1,0 +1,1735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FurryFiestaDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCESSLEVEL">
+          <Key>
+            <PropertyRef Name="Access_Level_ID" />
+          </Key>
+          <Property Name="Access_Level_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_Level_Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ACCESSORY">
+          <Key>
+            <PropertyRef Name="Accessory_ID" />
+          </Key>
+          <Property Name="Accessory_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Type_ID" Type="int" />
+          <Property Name="Accessory_Type" Type="varchar" MaxLength="100" />
+          <Property Name="Brand" Type="varchar" MaxLength="100" />
+          <Property Name="Animal_Type" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Title_ID" Type="int" />
+          <Property Name="Client_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Client_Cell_No" Type="char" MaxLength="10" />
+          <Property Name="Client_Address_Line" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="COMPLETEDTRANSACTION">
+          <Key>
+            <PropertyRef Name="Payment_Receipt_ID" />
+          </Key>
+          <Property Name="Payment_Receipt_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_ID" Type="int" />
+          <Property Name="Payment_Receipt_Date" Type="datetime" />
+          <Property Name="Payment_Receipt_Subtotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Receipt_VAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Receipt_Total_Amount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="DELIVERY">
+          <Key>
+            <PropertyRef Name="Delivery_ID" />
+          </Key>
+          <Property Name="Delivery_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Delivery_Date" Type="datetime" />
+          <Property Name="Delivery_Address" Type="varchar" MaxLength="200" />
+          <Property Name="Freight_Cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Title_ID" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Employee_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Employee_Cell_No" Type="varchar" MaxLength="20" />
+          <Property Name="Employee_Address_Line" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FOOD">
+          <Key>
+            <PropertyRef Name="Food_ID" />
+          </Key>
+          <Property Name="Food_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Type_ID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Product_Specific_Description" Type="varchar" MaxLength="100" />
+          <Property Name="Brand" Type="varchar" MaxLength="100" />
+          <Property Name="Flavour" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ORDERDETAILS">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Supplier_ID" Type="int" />
+          <Property Name="Order_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ORDERITEM">
+          <Key>
+            <PropertyRef Name="OrderItem_ID" />
+          </Key>
+          <Property Name="OrderItem_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_ID" Type="int" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="Order_Quantity" Type="int" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ORDERPAYMENT">
+          <Key>
+            <PropertyRef Name="OPayment_ID" />
+          </Key>
+          <Property Name="OPayment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_ID" Type="int" />
+          <Property Name="Payment_Type_ID" Type="int" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Supplier_ID" Type="int" />
+          <Property Name="Payment_Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PAYMENTRECEIPTLINE">
+          <Key>
+            <PropertyRef Name="Payment_Receipt_Num" />
+          </Key>
+          <Property Name="Payment_Receipt_Num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Receipt_ID" Type="int" />
+          <Property Name="Payment_Receipt_Date" Type="datetime" />
+          <Property Name="Receipt_Line_Amount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PAYMENTTYPE">
+          <Key>
+            <PropertyRef Name="Payment_Type_ID" />
+          </Key>
+          <Property Name="Payment_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Type_Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PET">
+          <Key>
+            <PropertyRef Name="PET_ID" />
+          </Key>
+          <Property Name="PET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Type_ID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Breed" Type="varchar" MaxLength="100" />
+          <Property Name="Date_Born" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Colour" Type="varchar" MaxLength="50" />
+          <Property Name="Image_Field" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Product_Description" Type="varchar" MaxLength="100" />
+          <Property Name="Product_Item_Quantity" Type="int" />
+          <Property Name="Product_Reorder_Level" Type="int" />
+          <Property Name="Product_Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Product_Type_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCTTYPE">
+          <Key>
+            <PropertyRef Name="Product_Type_ID" />
+          </Key>
+          <Property Name="Product_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Type_Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SALE">
+          <Key>
+            <PropertyRef Name="Sale_ID" />
+          </Key>
+          <Property Name="Sale_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Sale_Date" Type="datetime" />
+          <Property Name="Delivery_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SALELINE">
+          <Key>
+            <PropertyRef Name="SaleLine_ID" />
+          </Key>
+          <Property Name="SaleLine_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_ID" Type="int" />
+          <Property Name="Sale_ID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="SALEPAYMENT">
+          <Key>
+            <PropertyRef Name="SPayment_ID" />
+          </Key>
+          <Property Name="SPayment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sale_ID" Type="int" />
+          <Property Name="Payment_Type_ID" Type="int" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Payment_Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="Supplier_ID" />
+          </Key>
+          <Property Name="Supplier_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Supplier_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Rep_First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Rep_Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Title_ID" Type="int" />
+          <Property Name="Rep_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Rep_Cell_No" Type="char" MaxLength="10" />
+          <Property Name="Supplier_Address_Line" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="SYSTEMUSER">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="User_Password" Type="varchar" MaxLength="100" />
+          <Property Name="User_Password_Question" Type="varchar" MaxLength="200" />
+          <Property Name="User_Password_Answer" Type="varchar" MaxLength="100" />
+          <Property Name="Access_Level_ID" Type="int" />
+          <Property Name="Employee_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TITLE">
+          <Key>
+            <PropertyRef Name="Title_ID" />
+          </Key>
+          <Property Name="Title_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title_Name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__ACCESSORY__Produ__71D1E811">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="ACCESSORY" Type="Self.ACCESSORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="ACCESSORY">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENT__Title_ID__3E52440B">
+          <End Role="TITLE" Type="Self.TITLE" Multiplicity="0..1" />
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TITLE">
+              <PropertyRef Name="Title_ID" />
+            </Principal>
+            <Dependent Role="CLIENT">
+              <PropertyRef Name="Title_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMPLETED__Payme__6C190EBB">
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="0..1" />
+          <End Role="COMPLETEDTRANSACTION" Type="Self.COMPLETEDTRANSACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERPAYMENT">
+              <PropertyRef Name="OPayment_ID" />
+            </Principal>
+            <Dependent Role="COMPLETEDTRANSACTION">
+              <PropertyRef Name="Payment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLOYEE__Title___3B75D760">
+          <End Role="TITLE" Type="Self.TITLE" Multiplicity="0..1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TITLE">
+              <PropertyRef Name="Title_ID" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="Title_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FOOD__Product_Ty__778AC167">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="FOOD" Type="Self.FOOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="FOOD">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERDETA__Emplo__5070F446">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAILS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="ORDERDETAILS">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERDETA__Suppl__5165187F">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAILS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="ORDERDETAILS">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERITEM__Order__5441852A">
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAILS" Multiplicity="1" />
+          <End Role="ORDERITEM" Type="Self.ORDERITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERDETAILS">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="ORDERITEM">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERITEM__Produ__5535A963">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="ORDERITEM" Type="Self.ORDERITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="ORDERITEM">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Emplo__628FA481">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Order__60A75C0F">
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAILS" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERDETAILS">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Payme__619B8048">
+          <End Role="PAYMENTTYPE" Type="Self.PAYMENTTYPE" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENTTYPE">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Suppl__6383C8BA">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYMENTRE__Payme__6EF57B66">
+          <End Role="COMPLETEDTRANSACTION" Type="Self.COMPLETEDTRANSACTION" Multiplicity="0..1" />
+          <End Role="PAYMENTRECEIPTLINE" Type="Self.PAYMENTRECEIPTLINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPLETEDTRANSACTION">
+              <PropertyRef Name="Payment_Receipt_ID" />
+            </Principal>
+            <Dependent Role="PAYMENTRECEIPTLINE">
+              <PropertyRef Name="Payment_Receipt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PET__Product_Typ__74AE54BC">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="PET" Type="Self.PET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="PET">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCT__Product__4BAC3F29">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALE__Client_ID__5812160E">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="0..1" />
+          <End Role="SALE" Type="Self.SALE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="SALE">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALE__Delivery_I__59FA5E80">
+          <End Role="DELIVERY" Type="Self.DELIVERY" Multiplicity="0..1" />
+          <End Role="SALE" Type="Self.SALE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERY">
+              <PropertyRef Name="Delivery_ID" />
+            </Principal>
+            <Dependent Role="SALE">
+              <PropertyRef Name="Delivery_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALE__Employee_I__59063A47">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="SALE" Type="Self.SALE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="SALE">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALELINE__Produc__5CD6CB2B">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="SALELINE" Type="Self.SALELINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="SALELINE">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALELINE__Sale_I__5DCAEF64">
+          <End Role="SALE" Type="Self.SALE" Multiplicity="0..1" />
+          <End Role="SALELINE" Type="Self.SALELINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALE">
+              <PropertyRef Name="Sale_ID" />
+            </Principal>
+            <Dependent Role="SALELINE">
+              <PropertyRef Name="Sale_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Clien__693CA210">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Emplo__68487DD7">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Payme__6754599E">
+          <End Role="PAYMENTTYPE" Type="Self.PAYMENTTYPE" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENTTYPE">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Sale___66603565">
+          <End Role="SALE" Type="Self.SALE" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALE">
+              <PropertyRef Name="Sale_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Sale_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUPPLIER__Title___44FF419A">
+          <End Role="TITLE" Type="Self.TITLE" Multiplicity="0..1" />
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TITLE">
+              <PropertyRef Name="Title_ID" />
+            </Principal>
+            <Dependent Role="SUPPLIER">
+              <PropertyRef Name="Title_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SYSTEMUSE__Acces__412EB0B6">
+          <End Role="ACCESSLEVEL" Type="Self.ACCESSLEVEL" Multiplicity="0..1" />
+          <End Role="SYSTEMUSER" Type="Self.SYSTEMUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCESSLEVEL">
+              <PropertyRef Name="Access_Level_ID" />
+            </Principal>
+            <Dependent Role="SYSTEMUSER">
+              <PropertyRef Name="Access_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SYSTEMUSE__Emplo__4222D4EF">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="SYSTEMUSER" Type="Self.SYSTEMUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="SYSTEMUSER">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FurryFiestaDatabaseModelStoreContainer">
+          <EntitySet Name="ACCESSLEVEL" EntityType="Self.ACCESSLEVEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ACCESSORY" EntityType="Self.ACCESSORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPLETEDTRANSACTION" EntityType="Self.COMPLETEDTRANSACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DELIVERY" EntityType="Self.DELIVERY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FOOD" EntityType="Self.FOOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERDETAILS" EntityType="Self.ORDERDETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERITEM" EntityType="Self.ORDERITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERPAYMENT" EntityType="Self.ORDERPAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENTRECEIPTLINE" EntityType="Self.PAYMENTRECEIPTLINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENTTYPE" EntityType="Self.PAYMENTTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PET" EntityType="Self.PET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTTYPE" EntityType="Self.PRODUCTTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALE" EntityType="Self.SALE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALELINE" EntityType="Self.SALELINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALEPAYMENT" EntityType="Self.SALEPAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYSTEMUSER" EntityType="Self.SYSTEMUSER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TITLE" EntityType="Self.TITLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ACCESSORY__Produ__71D1E811" Association="Self.FK__ACCESSORY__Produ__71D1E811">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPE" />
+            <End Role="ACCESSORY" EntitySet="ACCESSORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENT__Title_ID__3E52440B" Association="Self.FK__CLIENT__Title_ID__3E52440B">
+            <End Role="TITLE" EntitySet="TITLE" />
+            <End Role="CLIENT" EntitySet="CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMPLETED__Payme__6C190EBB" Association="Self.FK__COMPLETED__Payme__6C190EBB">
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENT" />
+            <End Role="COMPLETEDTRANSACTION" EntitySet="COMPLETEDTRANSACTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLOYEE__Title___3B75D760" Association="Self.FK__EMPLOYEE__Title___3B75D760">
+            <End Role="TITLE" EntitySet="TITLE" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FOOD__Product_Ty__778AC167" Association="Self.FK__FOOD__Product_Ty__778AC167">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPE" />
+            <End Role="FOOD" EntitySet="FOOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERDETA__Emplo__5070F446" Association="Self.FK__ORDERDETA__Emplo__5070F446">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERDETA__Suppl__5165187F" Association="Self.FK__ORDERDETA__Suppl__5165187F">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERITEM__Order__5441852A" Association="Self.FK__ORDERITEM__Order__5441852A">
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+            <End Role="ORDERITEM" EntitySet="ORDERITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERITEM__Produ__5535A963" Association="Self.FK__ORDERITEM__Produ__5535A963">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="ORDERITEM" EntitySet="ORDERITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Emplo__628FA481" Association="Self.FK__ORDERPAYM__Emplo__628FA481">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Order__60A75C0F" Association="Self.FK__ORDERPAYM__Order__60A75C0F">
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Payme__619B8048" Association="Self.FK__ORDERPAYM__Payme__619B8048">
+            <End Role="PAYMENTTYPE" EntitySet="PAYMENTTYPE" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Suppl__6383C8BA" Association="Self.FK__ORDERPAYM__Suppl__6383C8BA">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYMENTRE__Payme__6EF57B66" Association="Self.FK__PAYMENTRE__Payme__6EF57B66">
+            <End Role="COMPLETEDTRANSACTION" EntitySet="COMPLETEDTRANSACTION" />
+            <End Role="PAYMENTRECEIPTLINE" EntitySet="PAYMENTRECEIPTLINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PET__Product_Typ__74AE54BC" Association="Self.FK__PET__Product_Typ__74AE54BC">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPE" />
+            <End Role="PET" EntitySet="PET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCT__Product__4BAC3F29" Association="Self.FK__PRODUCT__Product__4BAC3F29">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPE" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALE__Client_ID__5812160E" Association="Self.FK__SALE__Client_ID__5812160E">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="SALE" EntitySet="SALE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALE__Delivery_I__59FA5E80" Association="Self.FK__SALE__Delivery_I__59FA5E80">
+            <End Role="DELIVERY" EntitySet="DELIVERY" />
+            <End Role="SALE" EntitySet="SALE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALE__Employee_I__59063A47" Association="Self.FK__SALE__Employee_I__59063A47">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="SALE" EntitySet="SALE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALELINE__Produc__5CD6CB2B" Association="Self.FK__SALELINE__Produc__5CD6CB2B">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="SALELINE" EntitySet="SALELINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALELINE__Sale_I__5DCAEF64" Association="Self.FK__SALELINE__Sale_I__5DCAEF64">
+            <End Role="SALE" EntitySet="SALE" />
+            <End Role="SALELINE" EntitySet="SALELINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Clien__693CA210" Association="Self.FK__SALEPAYME__Clien__693CA210">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Emplo__68487DD7" Association="Self.FK__SALEPAYME__Emplo__68487DD7">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Payme__6754599E" Association="Self.FK__SALEPAYME__Payme__6754599E">
+            <End Role="PAYMENTTYPE" EntitySet="PAYMENTTYPE" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Sale___66603565" Association="Self.FK__SALEPAYME__Sale___66603565">
+            <End Role="SALE" EntitySet="SALE" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUPPLIER__Title___44FF419A" Association="Self.FK__SUPPLIER__Title___44FF419A">
+            <End Role="TITLE" EntitySet="TITLE" />
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SYSTEMUSE__Acces__412EB0B6" Association="Self.FK__SYSTEMUSE__Acces__412EB0B6">
+            <End Role="ACCESSLEVEL" EntitySet="ACCESSLEVEL" />
+            <End Role="SYSTEMUSER" EntitySet="SYSTEMUSER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SYSTEMUSE__Emplo__4222D4EF" Association="Self.FK__SYSTEMUSE__Emplo__4222D4EF">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="SYSTEMUSER" EntitySet="SYSTEMUSER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FurryFiestaDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCESSLEVEL">
+          <Key>
+            <PropertyRef Name="Access_Level_ID" />
+          </Key>
+          <Property Name="Access_Level_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_Level_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SYSTEMUSERs" Relationship="Self.FK__SYSTEMUSE__Acces__412EB0B6" FromRole="ACCESSLEVEL" ToRole="SYSTEMUSER" />
+        </EntityType>
+        <EntityType Name="ACCESSORY">
+          <Key>
+            <PropertyRef Name="Accessory_ID" />
+          </Key>
+          <Property Name="Accessory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Type_ID" Type="Int32" />
+          <Property Name="Accessory_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Animal_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK__ACCESSORY__Produ__71D1E811" FromRole="ACCESSORY" ToRole="PRODUCTTYPE" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title_ID" Type="Int32" />
+          <Property Name="Client_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Cell_No" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Client_Address_Line" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TITLE" Relationship="Self.FK__CLIENT__Title_ID__3E52440B" FromRole="CLIENT" ToRole="TITLE" />
+          <NavigationProperty Name="SALEs" Relationship="Self.FK__SALE__Client_ID__5812160E" FromRole="CLIENT" ToRole="SALE" />
+          <NavigationProperty Name="SALEPAYMENTs" Relationship="Self.FK__SALEPAYME__Clien__693CA210" FromRole="CLIENT" ToRole="SALEPAYMENT" />
+        </EntityType>
+        <EntityType Name="COMPLETEDTRANSACTION">
+          <Key>
+            <PropertyRef Name="Payment_Receipt_ID" />
+          </Key>
+          <Property Name="Payment_Receipt_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_ID" Type="Int32" />
+          <Property Name="Payment_Receipt_Date" Type="DateTime" />
+          <Property Name="Payment_Receipt_Subtotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Receipt_VAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Receipt_Total_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="ORDERPAYMENT" Relationship="Self.FK__COMPLETED__Payme__6C190EBB" FromRole="COMPLETEDTRANSACTION" ToRole="ORDERPAYMENT" />
+          <NavigationProperty Name="PAYMENTRECEIPTLINEs" Relationship="Self.FK__PAYMENTRE__Payme__6EF57B66" FromRole="COMPLETEDTRANSACTION" ToRole="PAYMENTRECEIPTLINE" />
+        </EntityType>
+        <EntityType Name="DELIVERY">
+          <Key>
+            <PropertyRef Name="Delivery_ID" />
+          </Key>
+          <Property Name="Delivery_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Delivery_Date" Type="DateTime" />
+          <Property Name="Delivery_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Freight_Cost" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="SALEs" Relationship="Self.FK__SALE__Delivery_I__59FA5E80" FromRole="DELIVERY" ToRole="SALE" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title_ID" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Cell_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Address_Line" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TITLE" Relationship="Self.FK__EMPLOYEE__Title___3B75D760" FromRole="EMPLOYEE" ToRole="TITLE" />
+          <NavigationProperty Name="ORDERDETAILS" Relationship="Self.FK__ORDERDETA__Emplo__5070F446" FromRole="EMPLOYEE" ToRole="ORDERDETAILS" />
+          <NavigationProperty Name="ORDERPAYMENTs" Relationship="Self.FK__ORDERPAYM__Emplo__628FA481" FromRole="EMPLOYEE" ToRole="ORDERPAYMENT" />
+          <NavigationProperty Name="SALEs" Relationship="Self.FK__SALE__Employee_I__59063A47" FromRole="EMPLOYEE" ToRole="SALE" />
+          <NavigationProperty Name="SALEPAYMENTs" Relationship="Self.FK__SALEPAYME__Emplo__68487DD7" FromRole="EMPLOYEE" ToRole="SALEPAYMENT" />
+          <NavigationProperty Name="SYSTEMUSERs" Relationship="Self.FK__SYSTEMUSE__Emplo__4222D4EF" FromRole="EMPLOYEE" ToRole="SYSTEMUSER" />
+        </EntityType>
+        <EntityType Name="FOOD">
+          <Key>
+            <PropertyRef Name="Food_ID" />
+          </Key>
+          <Property Name="Food_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Type_ID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Specific_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Flavour" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK__FOOD__Product_Ty__778AC167" FromRole="FOOD" ToRole="PRODUCTTYPE" />
+        </EntityType>
+        <EntityType Name="ORDERDETAIL">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Supplier_ID" Type="Int32" />
+          <Property Name="Order_Date" Type="DateTime" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__ORDERDETA__Emplo__5070F446" FromRole="ORDERDETAILS" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Self.FK__ORDERDETA__Suppl__5165187F" FromRole="ORDERDETAILS" ToRole="SUPPLIER" />
+          <NavigationProperty Name="ORDERITEMs" Relationship="Self.FK__ORDERITEM__Order__5441852A" FromRole="ORDERDETAILS" ToRole="ORDERITEM" />
+          <NavigationProperty Name="ORDERPAYMENTs" Relationship="Self.FK__ORDERPAYM__Order__60A75C0F" FromRole="ORDERDETAILS" ToRole="ORDERPAYMENT" />
+        </EntityType>
+        <EntityType Name="ORDERITEM">
+          <Key>
+            <PropertyRef Name="OrderItem_ID" />
+          </Key>
+          <Property Name="OrderItem_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="Order_Quantity" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="ORDERDETAIL" Relationship="Self.FK__ORDERITEM__Order__5441852A" FromRole="ORDERITEM" ToRole="ORDERDETAILS" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__ORDERITEM__Produ__5535A963" FromRole="ORDERITEM" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="ORDERPAYMENT">
+          <Key>
+            <PropertyRef Name="OPayment_ID" />
+          </Key>
+          <Property Name="OPayment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_ID" Type="Int32" />
+          <Property Name="Payment_Type_ID" Type="Int32" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Supplier_ID" Type="Int32" />
+          <Property Name="Payment_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Date" Type="DateTime" />
+          <NavigationProperty Name="COMPLETEDTRANSACTIONs" Relationship="Self.FK__COMPLETED__Payme__6C190EBB" FromRole="ORDERPAYMENT" ToRole="COMPLETEDTRANSACTION" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__ORDERPAYM__Emplo__628FA481" FromRole="ORDERPAYMENT" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="ORDERDETAIL" Relationship="Self.FK__ORDERPAYM__Order__60A75C0F" FromRole="ORDERPAYMENT" ToRole="ORDERDETAILS" />
+          <NavigationProperty Name="PAYMENTTYPE" Relationship="Self.FK__ORDERPAYM__Payme__619B8048" FromRole="ORDERPAYMENT" ToRole="PAYMENTTYPE" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Self.FK__ORDERPAYM__Suppl__6383C8BA" FromRole="ORDERPAYMENT" ToRole="SUPPLIER" />
+        </EntityType>
+        <EntityType Name="PAYMENTRECEIPTLINE">
+          <Key>
+            <PropertyRef Name="Payment_Receipt_Num" />
+          </Key>
+          <Property Name="Payment_Receipt_Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Receipt_ID" Type="Int32" />
+          <Property Name="Payment_Receipt_Date" Type="DateTime" />
+          <Property Name="Receipt_Line_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="COMPLETEDTRANSACTION" Relationship="Self.FK__PAYMENTRE__Payme__6EF57B66" FromRole="PAYMENTRECEIPTLINE" ToRole="COMPLETEDTRANSACTION" />
+        </EntityType>
+        <EntityType Name="PAYMENTTYPE">
+          <Key>
+            <PropertyRef Name="Payment_Type_ID" />
+          </Key>
+          <Property Name="Payment_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORDERPAYMENTs" Relationship="Self.FK__ORDERPAYM__Payme__619B8048" FromRole="PAYMENTTYPE" ToRole="ORDERPAYMENT" />
+          <NavigationProperty Name="SALEPAYMENTs" Relationship="Self.FK__SALEPAYME__Payme__6754599E" FromRole="PAYMENTTYPE" ToRole="SALEPAYMENT" />
+        </EntityType>
+        <EntityType Name="PET">
+          <Key>
+            <PropertyRef Name="PET_ID" />
+          </Key>
+          <Property Name="PET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Type_ID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Breed" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Born" Type="DateTime" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Field" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK__PET__Product_Typ__74AE54BC" FromRole="PET" ToRole="PRODUCTTYPE" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Item_Quantity" Type="Int32" />
+          <Property Name="Product_Reorder_Level" Type="Int32" />
+          <Property Name="Product_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Product_Type_ID" Type="Int32" />
+          <NavigationProperty Name="ORDERITEMs" Relationship="Self.FK__ORDERITEM__Produ__5535A963" FromRole="PRODUCT" ToRole="ORDERITEM" />
+          <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK__PRODUCT__Product__4BAC3F29" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
+          <NavigationProperty Name="SALELINEs" Relationship="Self.FK__SALELINE__Produc__5CD6CB2B" FromRole="PRODUCT" ToRole="SALELINE" />
+        </EntityType>
+        <EntityType Name="PRODUCTTYPE">
+          <Key>
+            <PropertyRef Name="Product_Type_ID" />
+          </Key>
+          <Property Name="Product_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACCESSORies" Relationship="Self.FK__ACCESSORY__Produ__71D1E811" FromRole="PRODUCTTYPE" ToRole="ACCESSORY" />
+          <NavigationProperty Name="FOODs" Relationship="Self.FK__FOOD__Product_Ty__778AC167" FromRole="PRODUCTTYPE" ToRole="FOOD" />
+          <NavigationProperty Name="PETs" Relationship="Self.FK__PET__Product_Typ__74AE54BC" FromRole="PRODUCTTYPE" ToRole="PET" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__Product__4BAC3F29" FromRole="PRODUCTTYPE" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="SALE">
+          <Key>
+            <PropertyRef Name="Sale_ID" />
+          </Key>
+          <Property Name="Sale_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Sale_Date" Type="DateTime" />
+          <Property Name="Delivery_ID" Type="Int32" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.FK__SALE__Client_ID__5812160E" FromRole="SALE" ToRole="CLIENT" />
+          <NavigationProperty Name="DELIVERY" Relationship="Self.FK__SALE__Delivery_I__59FA5E80" FromRole="SALE" ToRole="DELIVERY" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__SALE__Employee_I__59063A47" FromRole="SALE" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="SALELINEs" Relationship="Self.FK__SALELINE__Sale_I__5DCAEF64" FromRole="SALE" ToRole="SALELINE" />
+          <NavigationProperty Name="SALEPAYMENTs" Relationship="Self.FK__SALEPAYME__Sale___66603565" FromRole="SALE" ToRole="SALEPAYMENT" />
+        </EntityType>
+        <EntityType Name="SALELINE">
+          <Key>
+            <PropertyRef Name="SaleLine_ID" />
+          </Key>
+          <Property Name="SaleLine_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_ID" Type="Int32" />
+          <Property Name="Sale_ID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__SALELINE__Produc__5CD6CB2B" FromRole="SALELINE" ToRole="PRODUCT" />
+          <NavigationProperty Name="SALE" Relationship="Self.FK__SALELINE__Sale_I__5DCAEF64" FromRole="SALELINE" ToRole="SALE" />
+        </EntityType>
+        <EntityType Name="SALEPAYMENT">
+          <Key>
+            <PropertyRef Name="SPayment_ID" />
+          </Key>
+          <Property Name="SPayment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sale_ID" Type="Int32" />
+          <Property Name="Payment_Type_ID" Type="Int32" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Payment_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Payment_Date" Type="DateTime" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.FK__SALEPAYME__Clien__693CA210" FromRole="SALEPAYMENT" ToRole="CLIENT" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__SALEPAYME__Emplo__68487DD7" FromRole="SALEPAYMENT" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="PAYMENTTYPE" Relationship="Self.FK__SALEPAYME__Payme__6754599E" FromRole="SALEPAYMENT" ToRole="PAYMENTTYPE" />
+          <NavigationProperty Name="SALE" Relationship="Self.FK__SALEPAYME__Sale___66603565" FromRole="SALEPAYMENT" ToRole="SALE" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="Supplier_ID" />
+          </Key>
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rep_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rep_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title_ID" Type="Int32" />
+          <Property Name="Rep_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rep_Cell_No" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Supplier_Address_Line" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORDERDETAILS" Relationship="Self.FK__ORDERDETA__Suppl__5165187F" FromRole="SUPPLIER" ToRole="ORDERDETAILS" />
+          <NavigationProperty Name="ORDERPAYMENTs" Relationship="Self.FK__ORDERPAYM__Suppl__6383C8BA" FromRole="SUPPLIER" ToRole="ORDERPAYMENT" />
+          <NavigationProperty Name="TITLE" Relationship="Self.FK__SUPPLIER__Title___44FF419A" FromRole="SUPPLIER" ToRole="TITLE" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SYSTEMUSER">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Password_Question" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="User_Password_Answer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Access_Level_ID" Type="Int32" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <NavigationProperty Name="ACCESSLEVEL" Relationship="Self.FK__SYSTEMUSE__Acces__412EB0B6" FromRole="SYSTEMUSER" ToRole="ACCESSLEVEL" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__SYSTEMUSE__Emplo__4222D4EF" FromRole="SYSTEMUSER" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="TITLE">
+          <Key>
+            <PropertyRef Name="Title_ID" />
+          </Key>
+          <Property Name="Title_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLIENTs" Relationship="Self.FK__CLIENT__Title_ID__3E52440B" FromRole="TITLE" ToRole="CLIENT" />
+          <NavigationProperty Name="EMPLOYEEs" Relationship="Self.FK__EMPLOYEE__Title___3B75D760" FromRole="TITLE" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="SUPPLIERs" Relationship="Self.FK__SUPPLIER__Title___44FF419A" FromRole="TITLE" ToRole="SUPPLIER" />
+        </EntityType>
+        <Association Name="FK__SYSTEMUSE__Acces__412EB0B6">
+          <End Role="ACCESSLEVEL" Type="Self.ACCESSLEVEL" Multiplicity="0..1" />
+          <End Role="SYSTEMUSER" Type="Self.SYSTEMUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCESSLEVEL">
+              <PropertyRef Name="Access_Level_ID" />
+            </Principal>
+            <Dependent Role="SYSTEMUSER">
+              <PropertyRef Name="Access_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ACCESSORY__Produ__71D1E811">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="ACCESSORY" Type="Self.ACCESSORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="ACCESSORY">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENT__Title_ID__3E52440B">
+          <End Role="TITLE" Type="Self.TITLE" Multiplicity="0..1" />
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TITLE">
+              <PropertyRef Name="Title_ID" />
+            </Principal>
+            <Dependent Role="CLIENT">
+              <PropertyRef Name="Title_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALE__Client_ID__5812160E">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="0..1" />
+          <End Role="SALE" Type="Self.SALE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="SALE">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Clien__693CA210">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMPLETED__Payme__6C190EBB">
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="0..1" />
+          <End Role="COMPLETEDTRANSACTION" Type="Self.COMPLETEDTRANSACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERPAYMENT">
+              <PropertyRef Name="OPayment_ID" />
+            </Principal>
+            <Dependent Role="COMPLETEDTRANSACTION">
+              <PropertyRef Name="Payment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYMENTRE__Payme__6EF57B66">
+          <End Role="COMPLETEDTRANSACTION" Type="Self.COMPLETEDTRANSACTION" Multiplicity="0..1" />
+          <End Role="PAYMENTRECEIPTLINE" Type="Self.PAYMENTRECEIPTLINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPLETEDTRANSACTION">
+              <PropertyRef Name="Payment_Receipt_ID" />
+            </Principal>
+            <Dependent Role="PAYMENTRECEIPTLINE">
+              <PropertyRef Name="Payment_Receipt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALE__Delivery_I__59FA5E80">
+          <End Role="DELIVERY" Type="Self.DELIVERY" Multiplicity="0..1" />
+          <End Role="SALE" Type="Self.SALE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERY">
+              <PropertyRef Name="Delivery_ID" />
+            </Principal>
+            <Dependent Role="SALE">
+              <PropertyRef Name="Delivery_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLOYEE__Title___3B75D760">
+          <End Role="TITLE" Type="Self.TITLE" Multiplicity="0..1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TITLE">
+              <PropertyRef Name="Title_ID" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="Title_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERDETA__Emplo__5070F446">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="ORDERDETAILS">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Emplo__628FA481">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALE__Employee_I__59063A47">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="SALE" Type="Self.SALE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="SALE">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Emplo__68487DD7">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SYSTEMUSE__Emplo__4222D4EF">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="SYSTEMUSER" Type="Self.SYSTEMUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="SYSTEMUSER">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FOOD__Product_Ty__778AC167">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="FOOD" Type="Self.FOOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="FOOD">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERDETA__Suppl__5165187F">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="ORDERDETAILS">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERITEM__Order__5441852A">
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAIL" Multiplicity="1" />
+          <End Role="ORDERITEM" Type="Self.ORDERITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERDETAILS">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="ORDERITEM">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Order__60A75C0F">
+          <End Role="ORDERDETAILS" Type="Self.ORDERDETAIL" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERDETAILS">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERITEM__Produ__5535A963">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="ORDERITEM" Type="Self.ORDERITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="ORDERITEM">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Payme__619B8048">
+          <End Role="PAYMENTTYPE" Type="Self.PAYMENTTYPE" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENTTYPE">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERPAYM__Suppl__6383C8BA">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+          <End Role="ORDERPAYMENT" Type="Self.ORDERPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="ORDERPAYMENT">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Payme__6754599E">
+          <End Role="PAYMENTTYPE" Type="Self.PAYMENTTYPE" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENTTYPE">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Payment_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PET__Product_Typ__74AE54BC">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="PET" Type="Self.PET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="PET">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCT__Product__4BAC3F29">
+          <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTTYPE">
+              <PropertyRef Name="Product_Type_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="Product_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALELINE__Produc__5CD6CB2B">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="SALELINE" Type="Self.SALELINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="SALELINE">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALELINE__Sale_I__5DCAEF64">
+          <End Role="SALE" Type="Self.SALE" Multiplicity="0..1" />
+          <End Role="SALELINE" Type="Self.SALELINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALE">
+              <PropertyRef Name="Sale_ID" />
+            </Principal>
+            <Dependent Role="SALELINE">
+              <PropertyRef Name="Sale_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALEPAYME__Sale___66603565">
+          <End Role="SALE" Type="Self.SALE" Multiplicity="0..1" />
+          <End Role="SALEPAYMENT" Type="Self.SALEPAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALE">
+              <PropertyRef Name="Sale_ID" />
+            </Principal>
+            <Dependent Role="SALEPAYMENT">
+              <PropertyRef Name="Sale_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUPPLIER__Title___44FF419A">
+          <End Role="TITLE" Type="Self.TITLE" Multiplicity="0..1" />
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TITLE">
+              <PropertyRef Name="Title_ID" />
+            </Principal>
+            <Dependent Role="SUPPLIER">
+              <PropertyRef Name="Title_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FurryFiestaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCESSLEVELs" EntityType="Self.ACCESSLEVEL" />
+          <EntitySet Name="ACCESSORies" EntityType="Self.ACCESSORY" />
+          <EntitySet Name="CLIENTs" EntityType="Self.CLIENT" />
+          <EntitySet Name="COMPLETEDTRANSACTIONs" EntityType="Self.COMPLETEDTRANSACTION" />
+          <EntitySet Name="DELIVERies" EntityType="Self.DELIVERY" />
+          <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="FOODs" EntityType="Self.FOOD" />
+          <EntitySet Name="ORDERDETAILS" EntityType="Self.ORDERDETAIL" />
+          <EntitySet Name="ORDERITEMs" EntityType="Self.ORDERITEM" />
+          <EntitySet Name="ORDERPAYMENTs" EntityType="Self.ORDERPAYMENT" />
+          <EntitySet Name="PAYMENTRECEIPTLINEs" EntityType="Self.PAYMENTRECEIPTLINE" />
+          <EntitySet Name="PAYMENTTYPEs" EntityType="Self.PAYMENTTYPE" />
+          <EntitySet Name="PETs" EntityType="Self.PET" />
+          <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="PRODUCTTYPEs" EntityType="Self.PRODUCTTYPE" />
+          <EntitySet Name="SALEs" EntityType="Self.SALE" />
+          <EntitySet Name="SALELINEs" EntityType="Self.SALELINE" />
+          <EntitySet Name="SALEPAYMENTs" EntityType="Self.SALEPAYMENT" />
+          <EntitySet Name="SUPPLIERs" EntityType="Self.SUPPLIER" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="SYSTEMUSERs" EntityType="Self.SYSTEMUSER" />
+          <EntitySet Name="TITLEs" EntityType="Self.TITLE" />
+          <AssociationSet Name="FK__SYSTEMUSE__Acces__412EB0B6" Association="Self.FK__SYSTEMUSE__Acces__412EB0B6">
+            <End Role="ACCESSLEVEL" EntitySet="ACCESSLEVELs" />
+            <End Role="SYSTEMUSER" EntitySet="SYSTEMUSERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ACCESSORY__Produ__71D1E811" Association="Self.FK__ACCESSORY__Produ__71D1E811">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
+            <End Role="ACCESSORY" EntitySet="ACCESSORies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENT__Title_ID__3E52440B" Association="Self.FK__CLIENT__Title_ID__3E52440B">
+            <End Role="TITLE" EntitySet="TITLEs" />
+            <End Role="CLIENT" EntitySet="CLIENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALE__Client_ID__5812160E" Association="Self.FK__SALE__Client_ID__5812160E">
+            <End Role="CLIENT" EntitySet="CLIENTs" />
+            <End Role="SALE" EntitySet="SALEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Clien__693CA210" Association="Self.FK__SALEPAYME__Clien__693CA210">
+            <End Role="CLIENT" EntitySet="CLIENTs" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMPLETED__Payme__6C190EBB" Association="Self.FK__COMPLETED__Payme__6C190EBB">
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENTs" />
+            <End Role="COMPLETEDTRANSACTION" EntitySet="COMPLETEDTRANSACTIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYMENTRE__Payme__6EF57B66" Association="Self.FK__PAYMENTRE__Payme__6EF57B66">
+            <End Role="COMPLETEDTRANSACTION" EntitySet="COMPLETEDTRANSACTIONs" />
+            <End Role="PAYMENTRECEIPTLINE" EntitySet="PAYMENTRECEIPTLINEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALE__Delivery_I__59FA5E80" Association="Self.FK__SALE__Delivery_I__59FA5E80">
+            <End Role="DELIVERY" EntitySet="DELIVERies" />
+            <End Role="SALE" EntitySet="SALEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLOYEE__Title___3B75D760" Association="Self.FK__EMPLOYEE__Title___3B75D760">
+            <End Role="TITLE" EntitySet="TITLEs" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERDETA__Emplo__5070F446" Association="Self.FK__ORDERDETA__Emplo__5070F446">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Emplo__628FA481" Association="Self.FK__ORDERPAYM__Emplo__628FA481">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALE__Employee_I__59063A47" Association="Self.FK__SALE__Employee_I__59063A47">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="SALE" EntitySet="SALEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Emplo__68487DD7" Association="Self.FK__SALEPAYME__Emplo__68487DD7">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SYSTEMUSE__Emplo__4222D4EF" Association="Self.FK__SYSTEMUSE__Emplo__4222D4EF">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="SYSTEMUSER" EntitySet="SYSTEMUSERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FOOD__Product_Ty__778AC167" Association="Self.FK__FOOD__Product_Ty__778AC167">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
+            <End Role="FOOD" EntitySet="FOODs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERDETA__Suppl__5165187F" Association="Self.FK__ORDERDETA__Suppl__5165187F">
+            <End Role="SUPPLIER" EntitySet="SUPPLIERs" />
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERITEM__Order__5441852A" Association="Self.FK__ORDERITEM__Order__5441852A">
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+            <End Role="ORDERITEM" EntitySet="ORDERITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Order__60A75C0F" Association="Self.FK__ORDERPAYM__Order__60A75C0F">
+            <End Role="ORDERDETAILS" EntitySet="ORDERDETAILS" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERITEM__Produ__5535A963" Association="Self.FK__ORDERITEM__Produ__5535A963">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="ORDERITEM" EntitySet="ORDERITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Payme__619B8048" Association="Self.FK__ORDERPAYM__Payme__619B8048">
+            <End Role="PAYMENTTYPE" EntitySet="PAYMENTTYPEs" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERPAYM__Suppl__6383C8BA" Association="Self.FK__ORDERPAYM__Suppl__6383C8BA">
+            <End Role="SUPPLIER" EntitySet="SUPPLIERs" />
+            <End Role="ORDERPAYMENT" EntitySet="ORDERPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Payme__6754599E" Association="Self.FK__SALEPAYME__Payme__6754599E">
+            <End Role="PAYMENTTYPE" EntitySet="PAYMENTTYPEs" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PET__Product_Typ__74AE54BC" Association="Self.FK__PET__Product_Typ__74AE54BC">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
+            <End Role="PET" EntitySet="PETs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCT__Product__4BAC3F29" Association="Self.FK__PRODUCT__Product__4BAC3F29">
+            <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALELINE__Produc__5CD6CB2B" Association="Self.FK__SALELINE__Produc__5CD6CB2B">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="SALELINE" EntitySet="SALELINEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALELINE__Sale_I__5DCAEF64" Association="Self.FK__SALELINE__Sale_I__5DCAEF64">
+            <End Role="SALE" EntitySet="SALEs" />
+            <End Role="SALELINE" EntitySet="SALELINEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALEPAYME__Sale___66603565" Association="Self.FK__SALEPAYME__Sale___66603565">
+            <End Role="SALE" EntitySet="SALEs" />
+            <End Role="SALEPAYMENT" EntitySet="SALEPAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUPPLIER__Title___44FF419A" Association="Self.FK__SUPPLIER__Title___44FF419A">
+            <End Role="TITLE" EntitySet="TITLEs" />
+            <End Role="SUPPLIER" EntitySet="SUPPLIERs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FurryFiestaDatabaseModelStoreContainer" CdmEntityContainer="FurryFiestaEntities">
+          <EntitySetMapping Name="ACCESSLEVELs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.ACCESSLEVEL">
+              <MappingFragment StoreEntitySet="ACCESSLEVEL">
+                <ScalarProperty Name="Access_Level_ID" ColumnName="Access_Level_ID" />
+                <ScalarProperty Name="Access_Level_Description" ColumnName="Access_Level_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACCESSORies">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.ACCESSORY">
+              <MappingFragment StoreEntitySet="ACCESSORY">
+                <ScalarProperty Name="Accessory_ID" ColumnName="Accessory_ID" />
+                <ScalarProperty Name="Product_Type_ID" ColumnName="Product_Type_ID" />
+                <ScalarProperty Name="Accessory_Type" ColumnName="Accessory_Type" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Animal_Type" ColumnName="Animal_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENT">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
+                <ScalarProperty Name="Client_Email" ColumnName="Client_Email" />
+                <ScalarProperty Name="Client_Cell_No" ColumnName="Client_Cell_No" />
+                <ScalarProperty Name="Client_Address_Line" ColumnName="Client_Address_Line" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPLETEDTRANSACTIONs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.COMPLETEDTRANSACTION">
+              <MappingFragment StoreEntitySet="COMPLETEDTRANSACTION">
+                <ScalarProperty Name="Payment_Receipt_ID" ColumnName="Payment_Receipt_ID" />
+                <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+                <ScalarProperty Name="Payment_Receipt_Date" ColumnName="Payment_Receipt_Date" />
+                <ScalarProperty Name="Payment_Receipt_Subtotal" ColumnName="Payment_Receipt_Subtotal" />
+                <ScalarProperty Name="Payment_Receipt_VAT" ColumnName="Payment_Receipt_VAT" />
+                <ScalarProperty Name="Payment_Receipt_Total_Amount" ColumnName="Payment_Receipt_Total_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DELIVERies">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.DELIVERY">
+              <MappingFragment StoreEntitySet="DELIVERY">
+                <ScalarProperty Name="Delivery_ID" ColumnName="Delivery_ID" />
+                <ScalarProperty Name="Delivery_Date" ColumnName="Delivery_Date" />
+                <ScalarProperty Name="Delivery_Address" ColumnName="Delivery_Address" />
+                <ScalarProperty Name="Freight_Cost" ColumnName="Freight_Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Employee_Email" ColumnName="Employee_Email" />
+                <ScalarProperty Name="Employee_Cell_No" ColumnName="Employee_Cell_No" />
+                <ScalarProperty Name="Employee_Address_Line" ColumnName="Employee_Address_Line" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FOODs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.FOOD">
+              <MappingFragment StoreEntitySet="FOOD">
+                <ScalarProperty Name="Food_ID" ColumnName="Food_ID" />
+                <ScalarProperty Name="Product_Type_ID" ColumnName="Product_Type_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Product_Specific_Description" ColumnName="Product_Specific_Description" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Flavour" ColumnName="Flavour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERDETAILS">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.ORDERDETAIL">
+              <MappingFragment StoreEntitySet="ORDERDETAILS">
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERITEMs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.ORDERITEM">
+              <MappingFragment StoreEntitySet="ORDERITEM">
+                <ScalarProperty Name="OrderItem_ID" ColumnName="OrderItem_ID" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Order_Quantity" ColumnName="Order_Quantity" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERPAYMENTs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.ORDERPAYMENT">
+              <MappingFragment StoreEntitySet="ORDERPAYMENT">
+                <ScalarProperty Name="OPayment_ID" ColumnName="OPayment_ID" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Payment_Type_ID" ColumnName="Payment_Type_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="Payment_Amount" ColumnName="Payment_Amount" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTRECEIPTLINEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.PAYMENTRECEIPTLINE">
+              <MappingFragment StoreEntitySet="PAYMENTRECEIPTLINE">
+                <ScalarProperty Name="Payment_Receipt_Num" ColumnName="Payment_Receipt_Num" />
+                <ScalarProperty Name="Payment_Receipt_ID" ColumnName="Payment_Receipt_ID" />
+                <ScalarProperty Name="Payment_Receipt_Date" ColumnName="Payment_Receipt_Date" />
+                <ScalarProperty Name="Receipt_Line_Amount" ColumnName="Receipt_Line_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTTYPEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.PAYMENTTYPE">
+              <MappingFragment StoreEntitySet="PAYMENTTYPE">
+                <ScalarProperty Name="Payment_Type_ID" ColumnName="Payment_Type_ID" />
+                <ScalarProperty Name="Payment_Type_Description" ColumnName="Payment_Type_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PETs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.PET">
+              <MappingFragment StoreEntitySet="PET">
+                <ScalarProperty Name="PET_ID" ColumnName="PET_ID" />
+                <ScalarProperty Name="Product_Type_ID" ColumnName="Product_Type_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Breed" ColumnName="Breed" />
+                <ScalarProperty Name="Date_Born" ColumnName="Date_Born" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Image_Field" ColumnName="Image_Field" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+                <ScalarProperty Name="Product_Item_Quantity" ColumnName="Product_Item_Quantity" />
+                <ScalarProperty Name="Product_Reorder_Level" ColumnName="Product_Reorder_Level" />
+                <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+                <ScalarProperty Name="Product_Type_ID" ColumnName="Product_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTTYPEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.PRODUCTTYPE">
+              <MappingFragment StoreEntitySet="PRODUCTTYPE">
+                <ScalarProperty Name="Product_Type_ID" ColumnName="Product_Type_ID" />
+                <ScalarProperty Name="Product_Type_Description" ColumnName="Product_Type_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.SALE">
+              <MappingFragment StoreEntitySet="SALE">
+                <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Sale_Date" ColumnName="Sale_Date" />
+                <ScalarProperty Name="Delivery_ID" ColumnName="Delivery_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALELINEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.SALELINE">
+              <MappingFragment StoreEntitySet="SALELINE">
+                <ScalarProperty Name="SaleLine_ID" ColumnName="SaleLine_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALEPAYMENTs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.SALEPAYMENT">
+              <MappingFragment StoreEntitySet="SALEPAYMENT">
+                <ScalarProperty Name="SPayment_ID" ColumnName="SPayment_ID" />
+                <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Payment_Type_ID" ColumnName="Payment_Type_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Payment_Amount" ColumnName="Payment_Amount" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIERs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIER">
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="Supplier_Name" ColumnName="Supplier_Name" />
+                <ScalarProperty Name="Rep_First_Name" ColumnName="Rep_First_Name" />
+                <ScalarProperty Name="Rep_Last_Name" ColumnName="Rep_Last_Name" />
+                <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
+                <ScalarProperty Name="Rep_Email" ColumnName="Rep_Email" />
+                <ScalarProperty Name="Rep_Cell_No" ColumnName="Rep_Cell_No" />
+                <ScalarProperty Name="Supplier_Address_Line" ColumnName="Supplier_Address_Line" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSTEMUSERs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.SYSTEMUSER">
+              <MappingFragment StoreEntitySet="SYSTEMUSER">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+                <ScalarProperty Name="User_Password_Question" ColumnName="User_Password_Question" />
+                <ScalarProperty Name="User_Password_Answer" ColumnName="User_Password_Answer" />
+                <ScalarProperty Name="Access_Level_ID" ColumnName="Access_Level_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TITLEs">
+            <EntityTypeMapping TypeName="FurryFiestaDatabaseModel.TITLE">
+              <MappingFragment StoreEntitySet="TITLE">
+                <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
+                <ScalarProperty Name="Title_Name" ColumnName="Title_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

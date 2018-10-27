@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -77,9 +87,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,12 +156,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -201,9 +208,90 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ACCESSLEVEL.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACCESSORY.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CLIENT.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COMPLETEDTRANSACTION.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DELIVERY.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMPLOYEE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FOOD.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FurryFiestaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FurryFiestaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FurryFiestaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FurryFiestaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FurryFiestaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ORDERDETAIL.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ORDERITEM.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ORDERPAYMENT.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAYMENTRECEIPTLINE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAYMENTTYPE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PET.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRODUCT.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRODUCTTYPE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SALE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SALELINE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SALEPAYMENT.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUPPLIER.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYSTEMUSER.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TITLE.cs">
+      <DependentUpon>FurryFiestaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -214,12 +302,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\FurryFiestaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FurryFiestaModel.edmx</DependentUpon>
+      <LastGenOutput>FurryFiestaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FurryFiestaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FurryFiestaModel.edmx</DependentUpon>
+      <LastGenOutput>FurryFiestaModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\FurryFiestaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FurryFiestaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FurryFiestaModel.edmx.diagram">
+      <DependentUpon>FurryFiestaModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -278,6 +383,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

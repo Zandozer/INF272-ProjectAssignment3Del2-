@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="82c939c3382846d28ac84dd43e6a24e7" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.ACCESSLEVEL" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.ACCESSORY" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.CLIENT" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.COMPLETEDTRANSACTION" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.DELIVERY" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.EMPLOYEE" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.FOOD" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.ORDERDETAIL" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.ORDERITEM" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.ORDERPAYMENT" Width="1.5" PointX="10.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.PAYMENTRECEIPTLINE" Width="1.5" PointX="15" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.PAYMENTTYPE" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.PET" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.PRODUCT" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.PRODUCTTYPE" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.SALE" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.SALELINE" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.SALEPAYMENT" Width="1.5" PointX="10.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.SUPPLIER" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.SYSTEMUSER" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurryFiestaDatabaseModel.TITLE" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SYSTEMUSE__Acces__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ACCESSORY__Produ__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__CLIENT__Title_ID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALE__Client_ID__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALEPAYME__Clien__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__COMPLETED__Payme__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__PAYMENTRE__Payme__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALE__Delivery_I__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__EMPLOYEE__Title___3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERDETA__Emplo__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERPAYM__Emplo__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALE__Employee_I__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALEPAYME__Emplo__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SYSTEMUSE__Emplo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__FOOD__Product_Ty__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERDETA__Suppl__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERITEM__Order__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERPAYM__Order__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERITEM__Produ__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERPAYM__Payme__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__ORDERPAYM__Suppl__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALEPAYME__Payme__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__PET__Product_Typ__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__PRODUCT__Product__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALELINE__Produc__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALELINE__Sale_I__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SALEPAYME__Sale___66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="FurryFiestaDatabaseModel.FK__SUPPLIER__Title___44FF419A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
